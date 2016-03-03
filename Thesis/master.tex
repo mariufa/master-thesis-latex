@@ -1,0 +1,80 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%        Configuration of the document
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Load document class and preamble
+\documentclass[a4paper,twoside,11pt]{memoir}
+\input{preamble/include}
+\input{preamble/macro}
+\input{preamble/style}
+\input{preamble/input}
+
+% Activate bibliography
+\addbibresource{library.bib}
+
+% Activate index generation
+\makeindex
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%        Load the contents of the document
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+	\numberwithin{lstlisting}{chapter}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Metadata
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\title{Weighted sampling from a gamma distribution given sufficient statistics}
+	\author{Marius Fagerland}
+	\supervisor{Bo Henry Lindqvist}
+	
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Preliminaries
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\frontmatter
+	\pdfbookmark{Titlepage}{Titlepage}
+        \include{preliminaries/titlepage}
+	\clearpage
+
+	\pdfbookmark{\abstractname}{\abstractname}
+	\include{preliminaries/abstract}
+	\clearpage
+
+	\pdfbookmark{\contentsname}{\contentsname}
+	\tableofcontents*
+	\clearpage
+
+	\include{preliminaries/preface}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Chapters
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\mainmatter
+	\setcounter{secnumdepth}{2}
+
+	\include{chapters/introduction}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Appendices
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\appendix
+	\include{appendices/test-appendix}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Bibliography and index
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\backmatter
+        \begingroup
+        \emergencystretch 1.5em
+	\printbibliography
+        \endgroup
+	\printindex
+\end{document}

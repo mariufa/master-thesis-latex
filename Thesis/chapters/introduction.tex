@@ -1,0 +1,65 @@
+\chapter{Introduction}
+
+\section{Gamma distribution}
+Consider a number of events that follows a homogenous Poisson process with rate paramter $1/\beta$. Denote the time intervals between the events $X_1,...,X_\alpha$. The total time of the events are given by
+\begin{equation*}
+    X = X_1 + \cdots + X_\alpha.
+\end{equation*}
+Then $X$ is gamma distributed with parameters $(\alpha, \beta)$. The probability density function for the gamma distribution is given as follows.
+\begin{equation*}
+    f(x;\alpha,\beta) = \frac{x^{\alpha - 1}}{\Gamma(\alpha)\beta^\alpha} e^{\frac{-x}{\beta}}
+\end{equation*}
+The function $\Gamma(\alpha)$ is called the gamma function and is denoted
+\begin{equation*}
+    \Gamma(\alpha) = \int_{0}^{\infty} t^{\alpha - 1} e^{-t} dt.
+\end{equation*}
+Furthermore $\alpha>0$, $\beta>0$ and $X>0$.
+
+\subsection{Sufficient statistics}
+
+\subsection{Tranformation of variables}
+For tranformation of variables in distribution the following theorem is presented.
+\begin{theorem}
+Let $X$ have a pdf $f_X(x)$ and let $Y = g(X)$, where $g$ is a monotone function. Let FIX s51 casella $X$ and $Y$. Suppose that $f_X(x)$ is continuous on $X$ and that 
+\begin{equation*}
+f_Y (y) = 
+\begin{cases}
+f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right| & y \in \mathcal{Y} \\
+0 & \text{otherwise.}
+\end{cases}
+\end{equation*}
+\end{theorem}
+
+\subsection{Generating sample}
+The general setup is that we have data $X$ and sufficient statistcs $T$. An assumption is a random vector $U$ with known distribution. Furthermore assume functions $(\chi(\cdot, \cdot),\tau(\cdot, \cdot))$ such that
+\begin{equation*}
+    (\chi(U,\theta),\tau(U, \theta)) \overset{\theta}{\sim} (X,T).
+\end{equation*}
+For instance the vector $U$ could be from an uniform distribution between 0 and 1, while $\chi(U,\theta)$ is the inverse of the cumulative distribution and $\tau(U,\theta)$ is the statistics. For some instances this might give the wrong distribution to the samples. This is when $\tau(u, \theta)$ is not only dependent on $u$ in a function $r(u)$. To solve this weights $W_t(u)$ for the vector $U$ is proposed.
+
+
+
+
+To simulate from a gamma distribution a trick is proposed. Let $X = \beta Y$ where$X ~ f(x;a,b)$. The trick is to simulate $Y$ and then find $X$. The distribution of $Y$ is found by using tranformation of variables. From transformation of variables we have that
+\begin{align*}
+g(x) &= \frac{x}{\beta} \\
+g^{-1}(y) &= \beta y \\
+\frac{dg^{-1}(y)}{dy} &= \beta \\
+\end{align*}
+Then $Y$ has the distribution
+\begin{equation*}
+    f(y;\alpha) = \frac{y^{\alpha - 1}}{\Gamma(\alpha)} e^{-y},
+\end{equation*}
+which is the same as the gamma distribution with $\beta = 1$. To generate a sample the cumulative distribution function must be found. A cumulative distribution function is found by
+\begin{equation*}
+    F(x) = \int_{-\infty}^{x} f(u) du.
+\end{equation*}
+For the gamma distribution the cumulative distribution function becomes
+\begin{equation*}
+    F(x;\alpha, \beta) = \frac{\gamma(x, \alpha, \beta)}{\Gamma(\alpha)},
+\end{equation*}
+where $\gamma$ is the incomplete gamma function. Hence for $Y$ the cumulative distribtution is
+\begin{equation*}
+    F(y;\alpha) = \frac{\gamma(y, \alpha, 1)}{\Gamma(\alpha)}.
+\end{equation*}
+\section{Goodness of fit testing}
